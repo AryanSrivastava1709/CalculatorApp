@@ -105,9 +105,8 @@ class MainActivity : AppCompatActivity() {
             mainDisplay.text = addToInputText("0")
             showResults()
         }
-//        TODO: backspace
         equals.setOnClickListener {
-            showResults()
+            removeFromInputText()
         }
     }
     private fun addToInputText(buttonValue: String): String {
@@ -120,6 +119,10 @@ class MainActivity : AppCompatActivity() {
         return expression.replace(Regex("×"), "*")
     }
 
+    private fun removeFromInputText(){
+        val main:TextView = findViewById(R.id.tvDisplay)
+        main.text = main.text.dropLast(1).toString()
+    }
     open fun showResults() {
         val main: TextView = findViewById(R.id.tvDisplay)
         val main1: TextView =findViewById(R.id.tvSecondDisplay)
